@@ -1,7 +1,7 @@
-package collectionschallenge.service;
+package oopchallenge.service;
 
-import collectionschallenge.model.Course;
-import collectionschallenge.model.Student;
+import oopchallenge.model.Course;
+import oopchallenge.model.Student;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package collectionschallenge.model;
+package oopchallenge.model;
 
 public class Course {
 

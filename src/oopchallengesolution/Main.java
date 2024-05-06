@@ -1,6 +1,6 @@
-package collectionschallenge;
+package oopchallenge;
 
-import collectionschallenge.service.CourseService;
+import oopchallenge.service.CourseService;
 
 public class Main {
     public static void main(String[] args) {
