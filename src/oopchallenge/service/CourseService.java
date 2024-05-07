@@ -1,10 +1,11 @@
-package collectionschallenge.service;
+package oopchallenge.service;
 
-import collectionschallenge.model.Course;
-import collectionschallenge.model.Student;
+import oopchallenge.model.Course;
+import oopchallenge.model.Student;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class CourseService {
 
@@ -17,11 +18,11 @@ public class CourseService {
     public CourseService(){
 
         // create a new HashMap of Students upon instantiating CourseService
-        students.put("120120", new Student("Santiago", "120120"));
-        students.put( "884545", new Student( "Kate", "884545" ) );
-        students.put( "458787", new Student( "Alejandra", "458787" ) );
-        students.put( "135464", new Student( "Maria", "135464" ) );
-        students.put( "778979", new Student( "Peter", "778979" ) );
+        students.put("120120", new Student("Santiago", "Andres", 10 ,"120120"));
+        students.put( "884545", new Student( "Kate", "Smith", 50 ,"884545" ));
+        students.put( "458787", new Student( "Alejandra", "Thomas", 5, "458787" ));
+        students.put( "135464", new Student( "Maria", "Simpson", 99 ,"135464" ));
+        students.put( "778979", new Student( "Peter", "Thomas", 1, 0, 2,"778979" ));
 
         // create new HashMap of Courses upon instantiating CourseService
         courses.put("math_01", new Course("Mathematics 1", "math_01", 8));
@@ -38,6 +39,11 @@ public class CourseService {
         Course course = courses.get(courseId);
         Student student = students.get(studentId);
         student.enroll(course);
+    }
+
+    public void enrollStudent(Student[] students){
+        //TODO add all the students to the collection
+        //TODO, MUST DO -AS YOUR OWN CHALLENGE AFTER TODAY'S SESSION
     }
 
     // public method in CourseService to un-enroll student
@@ -81,4 +87,63 @@ public class CourseService {
 
         System.out.println("Total Credits: " + total);
     }
+
+    // public method to return the student by studentId
+    public Student getStudent(String studentId){
+        Student student = students.get(studentId);
+        return student;
+    }
+
+    // public method to return the number of students
+    public int countStudents(){
+        // TODO implement
+        return students.size();
+    }
+
+    // public method to return the best grades amongst students
+    public int bestGrade(){
+        //TODO implement
+        int highestGrade = 0;
+
+        for (Map.Entry<String, Student> entry: students.entrySet()) {
+            Student student = entry.getValue();
+            if(student.getGrade() > highestGrade){
+                highestGrade = student.getGrade();
+            }
+        }
+
+        return highestGrade;
+    }
+
+    // public method to showEnrolledStudents
+    public void showEnrolledStudents(String courseId){
+        //TODO implement using collections loops
+        ArrayList<Student> enrolledStudents = new ArrayList<Student>();
+        Course enrolledCourse = courses.get(courseId);
+
+        students.forEach((studentId, student)->{
+            ArrayList<Course> enrolledCourses = student.getEnrolledCourses();
+            for (Course course: enrolledCourses) {
+                // get the course based on courseId passed-in param
+                if(course.getId().equals(courseId))
+                    enrolledStudents.add(student);
+            }
+        });
+
+        System.out.println("Enrolled students for course: " + enrolledCourse.getName());
+        System.out.println("********************");
+        enrolledStudents.forEach(student -> {
+            System.out.println(student);
+        });
+    }
+
+    // public method to showAllCourses
+    public void showAllCourses(){
+        //TODO implement using collections loops
+        System.out.println("All available courses");
+        courses.forEach((courseId, course)->{
+            System.out.println(course);
+        });
+    }
+
 }

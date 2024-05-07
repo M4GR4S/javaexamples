@@ -1,4 +1,4 @@
-package collectionschallenge.model;
+package oopchallenge.model;
 
 public class Course {
 
@@ -20,6 +20,14 @@ public class Course {
 
     public void setCredits(int credits) {
         this.credits = credits;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
